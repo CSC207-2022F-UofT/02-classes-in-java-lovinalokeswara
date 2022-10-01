@@ -40,6 +40,8 @@ public class Silly implements Comparable<Silly>{
 
         return to_return;
     }
+    // QS: Why do we have to create to_return variable? Can't we just do my_static += 1
+
 
     /**
      * 2. Java allows for us to overload methods: this means we can have
@@ -80,8 +82,14 @@ public class Silly implements Comparable<Silly>{
      *       Make sure you document this method!
      */
 
-
-
+    /**
+     * Creates a new Silly object.
+     *
+     *
+     */
+    public Silly(String input_1, String input_2) {
+        this.name = input_1 + input_2;
+    }
 
 
     public static void main(String[] args) {
@@ -116,7 +124,7 @@ public class Silly implements Comparable<Silly>{
         y.countStatic();
         x.countStatic();
         x.countStatic();
-        int[] expected_values = {};
+        int[] expected_values = {1, 2, 3, 4};
 
         System.out.println("The countStatic calls will return " + Arrays.toString(expected_values));
     }
@@ -134,6 +142,7 @@ public class Silly implements Comparable<Silly>{
     @Override
     public String toString(){
         // TODO (Task 3): Implement the body of this method!
+        return this.name;
     }
 
     /**
@@ -159,9 +168,18 @@ public class Silly implements Comparable<Silly>{
 
         Silly other = (Silly) o; // To access .name of o, we need to cast it.
 
+        // QS: What is the code above doing??
+
         // Hint: to compare strings, we need to use .equals()
         //       e.g. s1.equals(s2)
+        if (this.name.equals(other.name)) {
+            return true;
+        } else {
+            return false;
+        }
     }
+
+    // QS: What's wrong with using else?
 
     /**
      * 5. If we want to compare two objects, we have to do two things:
@@ -194,6 +212,13 @@ public class Silly implements Comparable<Silly>{
          *                You can get the length of a string by using the
          *                .length() method.
          */
+        if (this.name.length() < other.name.length()) {
+            return -1;
+        } else if (this.name.length() > other.name.length()) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
     /*
