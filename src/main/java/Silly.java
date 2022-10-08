@@ -124,7 +124,7 @@ public class Silly implements Comparable<Silly>{
         y.countStatic();
         x.countStatic();
         x.countStatic();
-        int[] expected_values = {1, 2, 3, 4};
+        int[] expected_values = {0, 1, 2, 3};
 
         System.out.println("The countStatic calls will return " + Arrays.toString(expected_values));
     }
@@ -142,7 +142,7 @@ public class Silly implements Comparable<Silly>{
     @Override
     public String toString(){
         // TODO (Task 3): Implement the body of this method!
-        return this.name;
+        return name;
     }
 
     /**
@@ -168,8 +168,6 @@ public class Silly implements Comparable<Silly>{
 
         Silly other = (Silly) o; // To access .name of o, we need to cast it.
 
-        // QS: What is the code above doing??
-
         // Hint: to compare strings, we need to use .equals()
         //       e.g. s1.equals(s2)
         if (this.name.equals(other.name)) {
@@ -179,7 +177,6 @@ public class Silly implements Comparable<Silly>{
         }
     }
 
-    // QS: What's wrong with using else?
 
     /**
      * 5. If we want to compare two objects, we have to do two things:
